@@ -42,7 +42,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,11 +54,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Concrete\BlogWebDbContext.cs" />
+    <Compile Include="Entities\Archive.cs" />
+    <Compile Include="Entities\Author.cs" />
+    <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\Comment.cs" />
+    <Compile Include="Entities\ContactMessage.cs" />
+    <Compile Include="Entities\Menu.cs" />
+    <Compile Include="Entities\Post.cs" />
+    <Compile Include="Entities\Tag.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Migrations\202105051009042_Initial.cs" />
+    <Compile Include="Migrations\202105051009042_Initial.designer.cs">
+      <DependentUpon>202105051009042_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105051033200_UserUpdated.cs" />
+    <Compile Include="Migrations\202105051033200_UserUpdated.designer.cs">
+      <DependentUpon>202105051033200_UserUpdated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105051215231_ArchiveUpdated.cs" />
+    <Compile Include="Migrations\202105051215231_ArchiveUpdated.designer.cs">
+      <DependentUpon>202105051215231_ArchiveUpdated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105061153137_ArchiveUpdated1.cs" />
+    <Compile Include="Migrations\202105061153137_ArchiveUpdated1.designer.cs">
+      <DependentUpon>202105061153137_ArchiveUpdated1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Concrete\" />
-    <Folder Include="Entities\" />
+    <EmbeddedResource Include="Migrations\202105051009042_Initial.resx">
+      <DependentUpon>202105051009042_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105051033200_UserUpdated.resx">
+      <DependentUpon>202105051033200_UserUpdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105051215231_ArchiveUpdated.resx">
+      <DependentUpon>202105051215231_ArchiveUpdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105061153137_ArchiveUpdated1.resx">
+      <DependentUpon>202105061153137_ArchiveUpdated1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
