@@ -1,0 +1,19 @@
+﻿@model  IEnumerable<BlogWeb.WebUI.Models.CategoryViewModel>
+
+
+@{
+    var categories = Model;
+}
+<ul class="categories">
+    @foreach (var item in categories)
+    {
+        <li><a href="#">@item.Name <span>(@item.PostsCount))</span></a></li>
+        
+    }
+
+</ul>
+
+
+
+
+
