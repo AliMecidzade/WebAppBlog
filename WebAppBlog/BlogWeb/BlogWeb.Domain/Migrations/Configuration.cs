@@ -26,14 +26,14 @@
 
             },
             new Menu
-               {
-                   Id = 2,
-                   Name = "Travel",
-                   Action = "Index",
-                   Controller = "Travel",
-                   IsActive = true
+            {
+                Id = 2,
+                Name = "Travel",
+                Action = "Index",
+                Controller = "Travel",
+                IsActive = true
 
-               },
+            },
             new Menu
             {
                 Id = 3,
@@ -44,13 +44,13 @@
 
             },
             new Menu
-              {
-                  Id = 4,
-                  Name = "About",
-                  Action = "Index",
-                  Controller = "About",
-                  IsActive = true
-              }
+            {
+                Id = 4,
+                Name = "About",
+                Action = "Index",
+                Controller = "About",
+                IsActive = true
+            }
             );
             context.Categories.AddOrUpdate(new Category
             {

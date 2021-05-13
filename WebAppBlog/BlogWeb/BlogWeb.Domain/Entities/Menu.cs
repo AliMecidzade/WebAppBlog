@@ -14,8 +14,6 @@ namespace BlogWeb.Domain.Entities
         [StringLength(maximumLength: 50)]
         public string Name { get; set; }
         [StringLength(maximumLength: 50)]
-      
-        [EmailAddress]
         public string Controller { get; set; }
         [Required]
         [StringLength(maximumLength: 20)]
