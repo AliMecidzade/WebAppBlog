@@ -18,7 +18,7 @@ namespace BlogWeb.Domain.Entities
         [DataType("char")]
         public string Year { get; set; }
         public ICollection<Post> Posts { get; set; }
-
+     
 
         public Archive()
         {

@@ -1,0 +1,24 @@
+﻿@model IEnumerable<BlogWeb.WebUI.Models.TagViewModel>
+
+@{
+    var tags = Model;
+}
+
+
+
+<ul class="tagcloud">
+    @foreach (var tag in tags)
+    {
+        <a href="#" class="tag-cloud-link">@tag.Name</a>
+    }
+
+</ul>
+
+
+
+
+
+
+
+
+

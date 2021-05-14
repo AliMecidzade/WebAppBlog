@@ -1,0 +1,17 @@
+﻿@model IEnumerable<BlogWeb.WebUI.Models.ArchiveViewModel>
+
+
+@{
+    var archives = Model;
+}
+
+
+<ul class="categories">
+
+    @foreach (var archive in archives)
+    {
+        <li><a href="#">@archive.Month @archive.Year <span>(@archive.PostsCount)</span></a></li>
+    }
+
+
+</ul>

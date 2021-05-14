@@ -8,22 +8,15 @@ using System.Web.Mvc;
 
 namespace BlogWeb.WebUI.Controllers
 {
-    public class CategoryController : Controller
+    public class TagController : Controller
     {
         private BlogWebDbContext _dbContext;
-        public CategoryController()
+        public TagController()
         {
             _dbContext = new BlogWebDbContext();
-
         }
         [HttpGet]
-        public ActionResult All() => View(_dbContext.GetAllCategories());
-
-
-
-
-
-
-
+        public ActionResult All() => View(_dbContext.GetAllTags());
+       
     }
 }

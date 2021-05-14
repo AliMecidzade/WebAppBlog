@@ -179,13 +179,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ArchiveController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\DbContextExtensions.cs" />
+    <Compile Include="Models\ArchiveViewModel.cs" />
     <Compile Include="Models\CategoryViewModel.cs" />
+    <Compile Include="Models\TagViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -225,6 +229,8 @@
     <Content Include="Views\Shared\_PopularPostPartial.cshtml" />
     <Content Include="Views\Shared\_SearchFormPartial.cshtml" />
     <Content Include="Views\Category\All.cshtml" />
+    <Content Include="Views\Tag\All.cshtml" />
+    <Content Include="Views\Archive\All.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -234,8 +240,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Archive\" />
-    <Folder Include="Views\Tag\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BlogWeb.Domain\BlogWeb.Domain.csproj">

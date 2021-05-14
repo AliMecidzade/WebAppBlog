@@ -19,6 +19,23 @@ namespace BlogWeb.WebUI.Infrastructure
                 PostsCount = x.Posts.Count()
             });
         }
+        public static IEnumerable<ArchiveViewModel> GetAllArchives(this BlogWebDbContext _dbContext)
+        {
+          return  _dbContext.Archives.Select(x => new ArchiveViewModel
+            {
+                Month = x.Month,
+                Year = x.Year,
 
+              PostsCount = x.Posts.Count()
+            });
+        }
+        public static IEnumerable<TagViewModel> GetAllTags(this BlogWebDbContext _dbContext)
+        {
+            return _dbContext.Tags.Select(x => new TagViewModel
+            {
+                Name = x.Name
+             
+            });
+        }
     }
 }
