@@ -141,5 +141,18 @@ namespace BlogWeb.WebUI.Infrastructure
 			_dbContext.Comments.Add(comment);
 			return await _dbContext.SaveChangesAsync();
         }
+
+		public static IEnumerable<MenuViewModel> GetAllMenus(this BlogWebDbContext _dbContext)
+		{
+			return _dbContext.Menus.Where(x => x.IsActive)
+				.Select(x => new MenuViewModel
+			{
+				Name = x.Name,
+				Controller = x.Controller,
+				Action = x.Action
+			}).ToList();
+		}
+
+
 	}
 }

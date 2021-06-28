@@ -183,6 +183,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\PaginationController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\TagController.cs" />
@@ -196,6 +197,7 @@
     <Compile Include="Models\CommentGetModel.cs" />
     <Compile Include="Models\CommentPostModel.cs" />
     <Compile Include="Models\CommentViewModel.cs" />
+    <Compile Include="Models\MenuViewModel.cs" />
     <Compile Include="Models\PageModel.cs" />
     <Compile Include="Models\PopularPostViewModel.cs" />
     <Compile Include="Models\PostDetailsViewModel.cs" />
@@ -244,6 +246,7 @@
     <Content Include="Views\Post\AllPopular.cshtml" />
     <Content Include="Views\Post\Details.cshtml" />
     <Content Include="Views\Comment\Form.cshtml" />
+    <Content Include="Views\Menu\All.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
