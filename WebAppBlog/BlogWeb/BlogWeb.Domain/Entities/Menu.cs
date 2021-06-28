@@ -7,18 +7,19 @@ using System.Threading.Tasks;
 
 namespace BlogWeb.Domain.Entities
 {
-    public class Menu
-    {
-        public int Id { get; set; }
-        [Required]
-        [StringLength(maximumLength: 50)]
-        public string Name { get; set; }
-        [StringLength(maximumLength: 50)]
-        public string Controller { get; set; }
-        [Required]
-        [StringLength(maximumLength: 20)]
-        public string Action { get; set; }
-
-        public bool IsActive { get; set; }
-    }
+	public class Menu
+	{
+		public int Id { get; set; }
+		[Required]
+		[StringLength(maximumLength: 50)]
+		public string Name { get; set; }
+		[Required]
+		[StringLength(maximumLength: 50)]
+		public string Controller { get; set; }
+		[Required]
+		[StringLength(maximumLength: 50)]
+		public string Action { get; set; }
+		[Required]
+		public bool IsActive { get; set; }
+	}
 }

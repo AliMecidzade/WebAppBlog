@@ -1,0 +1,39 @@
+﻿@model BlogWeb.WebUI.Models.CommentPostModel
+
+@{
+    var comment = Model;
+}
+
+
+@using (@Html.BeginForm("Add", "Comment", FormMethod.Post, htmlAttributes: new { @class = "p - 3 p - md - 5 bg - light" }))
+{
+    @Html.AntiForgeryToken();
+    @Html.HiddenFor(x => x.PostId)
+    <div class="form-group">
+      
+        @Html.LabelFor(x => x.Username)
+        @Html.TextBoxFor(x => x.Username, htmlAttributes: new { @class = "form-control", id = "name" })
+
+    </div>
+    <div class="form-group">
+      
+        @Html.LabelFor(x => x.Email)
+        @Html.TextBoxFor(x => x.Email, htmlAttributes: new { @class = "form-control", id = "email" })
+
+    </div>
+    <div class="form-group">
+       
+        @Html.LabelFor(x => x.Website)
+        @Html.TextBoxFor(x => x.Website, htmlAttributes: new { @class = "form-control", id = "website" })
+
+    </div>
+    <div class="form-group">
+       
+        @Html.LabelFor(x => x.Message)
+        @Html.TextAreaFor(x => x.Message,rows: 10 , columns: 30,  htmlAttributes: new { @class = "form-control", id = "message" })
+
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
+    </div>
+}

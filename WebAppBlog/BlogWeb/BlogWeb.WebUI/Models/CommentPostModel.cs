@@ -2,19 +2,16 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace BlogWeb.Domain.Entities
+namespace BlogWeb.WebUI.Models
 {
-	public class Comment
-	{
-		public int Id { get; set; }
+    public class CommentPostModel
+    {
 		[Required]
 		[StringLength(maximumLength: 90)]
 		public string Username { get; set; }
 		[Required]
-		
 		[StringLength(maximumLength: 90)]
 		public string Website { get; set; }
 		[Required]
@@ -27,12 +24,7 @@ namespace BlogWeb.Domain.Entities
 		[Required]
 		[DataType("smalldatetime")]
 		public DateTime SubmmittedDate { get; set; }
-		public User User { get; set; }
-		[Required]
-		public int UserId { get; set; }
-		public Post Post { get; set; }
 		[Required]
 		public int PostId { get; set; }
 	}
 }
-

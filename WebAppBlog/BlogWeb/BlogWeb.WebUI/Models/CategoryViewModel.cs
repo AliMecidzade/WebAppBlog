@@ -5,9 +5,10 @@ using System.Web;
 
 namespace BlogWeb.WebUI.Models
 {
-    public class CategoryViewModel
-    {
-        public string Name { get; set; }
-        public int PostsCount { get; set; }
-    }
+	public class CategoryViewModel
+	{
+		public string Name { get; set; }
+
+		public int PostsCount { get; set; }
+	}
 }

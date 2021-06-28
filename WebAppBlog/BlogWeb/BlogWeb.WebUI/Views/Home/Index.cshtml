@@ -1,60 +1,60 @@
-﻿@{
-    Layout = "../Shared/_Layout.cshtml";
-}
-<div id="colorlib-main">
-    <section class="ftco-section ftco-no-pt ftco-no-pb">
-        <div class="container">
-            <div class="row d-flex">
-                <div class="col-xl-8 py-5 px-md-5">
-                    <div class="row pt-md-4">
+﻿@using BlogWeb.WebUI.Models;
+@model IEnumerable<BlogWeb.WebUI.Models.PostViewModel>
+@{ Layout = "../Shared/_Layout.cshtml";
+    var posts = Model;
+    ViewBag.Title = "Home"; }
 
-                        @{Html.RenderPartial("_SinglePostIndexPartial"); }
+<section class="ftco-section ftco-no-pt ftco-no-pb">
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-xl-8 py-5 px-md-5">
+                <div class="row pt-md-4">
+                    @foreach (var post in posts)
+                    {
+                        Html.RenderPartial("_SinglePostIndexPartial", post);
+                    }
+                </div><!-- END-->
+                <div class="row">
+                    <!--pagination-->
+                    <div class="col">
+                        @Html.Action("Pages", "Pagination" , new PageModel { Controller = "Home" , Action = "Index"})
 
-                    </div><!-- END-->
-                    <div class="row">
-                        <div class="col">
-                          @{Html.RenderPartial("_PaginationPartial"); }
-                        </div>
                     </div>
                 </div>
-                <div class="col-xl-4 sidebar ftco-animate bg-light pt-5">
-                    <div class="sidebar-box pt-md-4">
-                        @{Html.RenderPartial("_SearchFormPartial"); }
-                    </div>
-                    <div class="sidebar-box ftco-animate">
-                        <h3 class="sidebar-heading">Categories</h3>
-                        @Html.Action("All" , "Category")
-                    </div>
-
-                    <div class="sidebar-box ftco-animate">
-                        <h3 class="sidebar-heading">Popular Articles</h3>
-                        @{Html.RenderPartial("_PopularPostPartial"); }
-                        
-                    </div>
-
-                    <div class="sidebar-box ftco-animate">
-                        <h3 class="sidebar-heading">Tag Cloud</h3>
-                        @Html.Action("All", "Tag")
-
-                    </div>
-
-                    <div class="sidebar-box subs-wrap img py-4" style="background-image: url(/Content/images/bg_1.jpg);">
-                        @{Html.RenderPartial("_NewsLetterSideBarPartial"); }
-                    </div>
-
-                    <div class="sidebar-box ftco-animate">
-                        <h3 class="sidebar-heading">Archives</h3>
-                        @Html.Action("All", "Archive")
-
-                    </div>
-
-
-                    <div class="sidebar-box ftco-animate">
-                        @{Html.RenderPartial("_SideBarBottomPartial"); }
-
-                    </div>
-                </div><!-- END COL -->
             </div>
+            <div class="col-xl-4 sidebar ftco-animate bg-light pt-5">
+                <div class="sidebar-box pt-md-4">
+                    @{ Html.RenderPartial("_SearchFormPartial"); }
+                </div>
+                <div class="sidebar-box ftco-animate">
+                    <h3 class="sidebar-heading">Categories</h3>
+                    @Html.Action("All", "Category")
+                </div>
+
+                <div class="sidebar-box ftco-animate">
+                    <h3 class="sidebar-heading">Popular Articles</h3>
+                    @Html.Action("AllPopular", "Post")
+                </div>
+
+                <div class="sidebar-box ftco-animate">
+                    <h3 class="sidebar-heading">Tag Cloud</h3>
+                    @Html.Action("All", "Tag")
+                </div>
+
+                <div class="sidebar-box subs-wrap img py-4" style="background-image: url(/Content/images/bg_1.jpg);">
+                    @{ Html.RenderPartial("_NewsLetterSideBarPartial"); }
+                </div>
+
+                <div class="sidebar-box ftco-animate">
+                    <h3 class="sidebar-heading">Archives</h3>
+                    @Html.Action("All", "Archive")
+                </div>
+
+
+                <div class="sidebar-box ftco-animate">
+                    @{ Html.RenderPartial("_SideBarBottomPartial"); }
+                </div>
+            </div><!-- END COL -->
         </div>
-    </section>
-</div><!-- END COLORLIB-MAIN -->
+    </div>
+</section>

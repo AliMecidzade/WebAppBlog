@@ -1,0 +1,27 @@
+﻿@using BlogWeb.WebUI.Models;
+@model PageModel
+@{ var pageModel = Model; }
+
+<div class="block-27">
+    <ul>
+        <li class="active">
+
+            @Html.ActionLink("1", pageModel.Action, pageModel.Controller, routeValues: new PageModel { Number = 1, Action = pageModel.Action, Controller = pageModel.Controller },
+                                                                        htmlAttributes: null)
+
+
+               
+        </li>
+    @for (int page = 2; page < pageModel.PagesCount + 1; page++)
+    {
+<li>
+    @Html.ActionLink(page.ToString(), pageModel.Action, pageModel.Controller,
+    routeValues: new PageModel { Number = page, Action = pageModel.Action, Controller = pageModel.Controller }, htmlAttributes: null)
+
+
+
+                                           
+</li>}
+</ul>
+</div>
+

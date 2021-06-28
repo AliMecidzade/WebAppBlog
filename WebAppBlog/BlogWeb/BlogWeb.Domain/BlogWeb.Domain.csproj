@@ -80,6 +80,14 @@
     <Compile Include="Migrations\202105061153137_ArchiveUpdated1.designer.cs">
       <DependentUpon>202105061153137_ArchiveUpdated1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105141049042_ViewsCountAddedToPost.cs" />
+    <Compile Include="Migrations\202105141049042_ViewsCountAddedToPost.designer.cs">
+      <DependentUpon>202105141049042_ViewsCountAddedToPost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105180847458_PaginationUpdated.cs" />
+    <Compile Include="Migrations\202105180847458_PaginationUpdated.designer.cs">
+      <DependentUpon>202105180847458_PaginationUpdated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -95,6 +103,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105061153137_ArchiveUpdated1.resx">
       <DependentUpon>202105061153137_ArchiveUpdated1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105141049042_ViewsCountAddedToPost.resx">
+      <DependentUpon>202105141049042_ViewsCountAddedToPost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105180847458_PaginationUpdated.resx">
+      <DependentUpon>202105180847458_PaginationUpdated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

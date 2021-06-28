@@ -5,8 +5,7 @@ using System.Web;
 
 namespace BlogWeb.WebUI.Models
 {
-	public class TagViewModel
-	{
-		public string Name { get; set; }
-	}
+    public class CommentGetModel
+    {
+    }
 }
