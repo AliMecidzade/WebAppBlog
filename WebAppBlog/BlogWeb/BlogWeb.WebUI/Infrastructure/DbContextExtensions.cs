@@ -55,8 +55,31 @@ namespace BlogWeb.WebUI.Infrastructure
                     ImagePath = x.ImagePath
                 }).ToListAsync();
         }
+		public static async Task<IEnumerable<PostTravelViewModel>> GetPaginatablePostTravelAsync(this BlogWebDbContext _dbContext, int itemsPerPage, PageModel model)
+		{
+			return await _dbContext.Posts.OrderBy(x => x.WrittenDate)
+				.Skip((itemsPerPage * model.Number) - itemsPerPage).Take(itemsPerPage)
+				.Select(x => new PostTravelViewModel
+				{
 
-        public static PageModel GetPages(this BlogWebDbContext _dbContext, PageModel model)
+					Id = x.Id,
+					Title = x.Title,
+					ShortDescription = x.ShortDescription,
+					WrittenDate = x.WrittenDate,
+					CommentsCount = x.Comments.Count,
+					ImagePath = x.ImagePath,
+					Author = _dbContext.Authors.Where(y => y.Id == x.AuthorId)
+					                                       .Select(y => new AuthorViewModel
+														   {
+															   Description = y.Description,
+															   ImagePath = y.User.ImagePath,
+															   Username = y.User.Username
+														   }).FirstOrDefault()
+														   
+				}).ToListAsync();
+		}
+
+		public static PageModel GetPages(this BlogWebDbContext _dbContext, PageModel model)
 		{
 			int postsCount = _dbContext.Posts.Count();
 			int pagesCount = postsCount % 6 == 0 ? postsCount / 6 : postsCount / 6 + 1;
@@ -141,7 +164,19 @@ namespace BlogWeb.WebUI.Infrastructure
 			_dbContext.Comments.Add(comment);
 			return await _dbContext.SaveChangesAsync();
         }
-
+		public static async Task<int> SendMessageAsync(this BlogWebDbContext _dbContext, ContactMessageViewModel model)
+		{
+			ContactMessage message = new ContactMessage
+			{
+				Email = model.Email,
+				SubmmittedDate = DateTime.Now,
+				Message = model.Message,
+                Name = model.Name,
+				Subject = model.Subject
+			};
+			_dbContext.ContactMessages.Add(message);
+			return await _dbContext.SaveChangesAsync();
+		}
 		public static IEnumerable<MenuViewModel> GetAllMenus(this BlogWebDbContext _dbContext)
 		{
 			return _dbContext.Menus.Where(x => x.IsActive)

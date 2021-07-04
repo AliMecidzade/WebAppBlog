@@ -157,6 +157,7 @@
     <Content Include="Content\css\bootstrap-theme.css.map" />
     <Content Include="Content\css\bootstrap.css.map" />
     <Content Include="Content\css\bootstrap-theme.min.css.map" />
+    <Content Include="Areas\Admin\Views\web.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -168,6 +169,8 @@
     <Content Include="Scripts\jquery.magnific-popup.min.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.stellar.min.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\jquery.waypoints.min.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
@@ -179,14 +182,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\ArchiveController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\FashionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\PaginationController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\TagController.cs" />
+    <Compile Include="Controllers\TravelController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -194,6 +202,8 @@
     <Compile Include="Models\ArchiveViewModel.cs" />
     <Compile Include="Models\AuthorViewModel.cs" />
     <Compile Include="Models\CategoryViewModel.cs" />
+    <Compile Include="Models\ContactMessageViewModel.cs" />
+    <Compile Include="Models\PostTravelViewModel.cs" />
     <Compile Include="Models\CommentGetModel.cs" />
     <Compile Include="Models\CommentPostModel.cs" />
     <Compile Include="Models\CommentViewModel.cs" />
@@ -247,6 +257,11 @@
     <Content Include="Views\Post\Details.cshtml" />
     <Content Include="Views\Comment\Form.cshtml" />
     <Content Include="Views\Menu\All.cshtml" />
+    <Content Include="Views\Fashion\Index.cshtml" />
+    <Content Include="Views\Travel\Index.cshtml" />
+    <Content Include="Views\Shared\_SinglePostTravelView.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -256,6 +271,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Views\Archive\" />
     <Folder Include="Views\Command\" />
   </ItemGroup>

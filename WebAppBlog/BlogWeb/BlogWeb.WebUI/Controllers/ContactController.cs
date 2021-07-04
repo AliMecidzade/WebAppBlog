@@ -10,29 +10,31 @@ using System.Web.Mvc;
 
 namespace BlogWeb.WebUI.Controllers
 {
-    public class CommentController : Controller
+    public class ContactController : Controller
     {
+
         private BlogWebDbContext _dbContext;
 
 
-        public CommentController()
+        public ContactController()
         {
             _dbContext = new BlogWebDbContext();
         }
         [HttpGet]
-        public ActionResult Form(CommentPostModel model)
+        public ActionResult Index()
         {
-            return View(model);
+            return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public  async Task<ActionResult> Add(CommentPostModel model)
+        public async Task<ActionResult> Send(ContactMessageViewModel model)
         {
             if (ModelState.IsValid)
             {
-                await _dbContext.AddCommentAsync(model);
+                 await _dbContext.SendMessageAsync(model);
             }
-            return RedirectToAction("Detsils", "Post" , routeValues: new { id = model.PostId});
+            return RedirectToAction("Index", "Contact");
         }
     }
 }

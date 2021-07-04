@@ -88,6 +88,10 @@
     <Compile Include="Migrations\202105180847458_PaginationUpdated.designer.cs">
       <DependentUpon>202105180847458_PaginationUpdated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107021208244_ContactMessageUpdated.cs" />
+    <Compile Include="Migrations\202107021208244_ContactMessageUpdated.designer.cs">
+      <DependentUpon>202107021208244_ContactMessageUpdated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -109,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105180847458_PaginationUpdated.resx">
       <DependentUpon>202105180847458_PaginationUpdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107021208244_ContactMessageUpdated.resx">
+      <DependentUpon>202107021208244_ContactMessageUpdated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
