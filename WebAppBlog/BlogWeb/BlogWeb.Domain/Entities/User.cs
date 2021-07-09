@@ -18,7 +18,7 @@ namespace BlogWeb.Domain.Entities
 		[StringLength(maximumLength: 40, ErrorMessage = "Maximum is 50 characters!")]
 		public string Email { get; set; }
 		[Required]
-		[StringLength(maximumLength: 20, MinimumLength = 6, ErrorMessage = "Maximum is 20 characters, Minimum is 6 characters")]
+		[StringLength(maximumLength: 100, MinimumLength = 6, ErrorMessage = "Maximum is 20 characters, Minimum is 6 characters")]
 		public string Password { get; set; }
 		[Required]
 		[StringLength(maximumLength: 50, ErrorMessage = "Maximum is 50 characters!")]

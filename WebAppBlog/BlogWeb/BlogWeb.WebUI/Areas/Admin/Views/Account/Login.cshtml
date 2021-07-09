@@ -1,0 +1,57 @@
+﻿@model BlogWeb.WebUI.Areas.Admin.Models.LoginModel
+
+
+<!DOCTYPE html>
+<html lang="en">
+@{Html.RenderPartial("_Head");}
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Please Sign In</h3>
+                    </div>
+                    <div class="panel-body"> 
+                        @using (@Html.BeginForm("Login", "Account", FormMethod.Post, htmlAttributes: new { @class = "bg-light p-5 " }))
+                        {
+                            
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-group">
+                            </div>
+                            <div class="form-group">
+
+
+                                @Html.TextBoxFor(x => x.Email, htmlAttributes: new { @class = "form-control", id = "email", @placeholder = "Your Email"})
+                                @Html.ValidationMessageFor(x => x.Email)
+                            </div>
+                            <div class="form-group">
+
+
+                                @Html.PasswordFor(x => x.Password, htmlAttributes: new { @class = "form-control", id = "password", @placeholder = "Password" })
+                                @Html.ValidationMessageFor(x => x.Password)
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label>
+                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                                    </label>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Login" class="btn btn-lg py-3 px-4 btn-primary">
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

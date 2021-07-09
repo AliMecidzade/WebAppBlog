@@ -1,5 +1,6 @@
 ﻿using BlogWeb.Domain.Concrete;
 using BlogWeb.Domain.Entities;
+using BlogWeb.WebUI.Areas.Admin.Models;
 using BlogWeb.WebUI.Models;
 using System;
 using System.Collections.Generic;
@@ -186,6 +187,13 @@ namespace BlogWeb.WebUI.Infrastructure
 				Controller = x.Controller,
 				Action = x.Action
 			}).ToList();
+		}
+
+		public static async Task<User> GetUserAsync(this BlogWebDbContext _dbContext, LoginModel model) 
+		{
+		  return await _dbContext.Users.Where(x => x.Email == model.Email && x.Password == model.Password).FirstOrDefaultAsync();
+
+			
 		}
 
 

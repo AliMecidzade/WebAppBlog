@@ -11,16 +11,16 @@ namespace BlogWeb.Domain.Entities
 	{
 		public int Id { get; set; }
 		[Required]
-		[StringLength(maximumLength: 100)]
+		[StringLength(maximumLength: 300)]
 		public string Title { get; set; }
 		[Required]
-		[StringLength(maximumLength: 100)]
+		[StringLength(maximumLength: 300)]
 		public string ShortDescription { get; set; }
 		[Required]
 		[StringLength(maximumLength: 700)]
 		public string Text { get; set; }
 		[Required]
-		[StringLength(maximumLength: 100, ErrorMessage = "Maximum is 50 characters!")]
+		[StringLength(maximumLength: 300, ErrorMessage = "Maximum is 50 characters!")]
 		public string ImagePath { get; set; }
 		[Required]
 		public int ViewsCount { get; set; }

@@ -1,89 +1,94 @@
-﻿@model BlogWeb.WebUI.Models.ContactMessageViewModel
-@{
-    ViewBag.Title = "Contact";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-
-<section class="ftco-section contact-section px-md-4">
-    <div class="container">
-        <div class="row d-flex mb-5 contact-info">
-            <div class="col-md-12 mb-4">
-                <h2 class="h3">Contact Information</h2>
-            </div>
-            <div class="w-100"></div>
-            <div class="col-lg-6 col-xl-3 d-flex mb-4">
-                <div class="info bg-light p-4">
-                    <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+﻿<div class="row">
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-comments fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">26</div>
+                        <div>New Comments!</div>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-xl-3 d-flex mb-4">
-                <div class="info bg-light p-4">
-                    <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+            <a href="#">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                    <div class="clearfix"></div>
                 </div>
-            </div>
-            <div class="col-lg-6 col-xl-3 d-flex mb-4">
-                <div class="info bg-light p-4">
-                    <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
-                </div>
-            </div>
-            <div class="col-lg-6 col-xl-3 d-flex mb-4">
-                <div class="info bg-light p-4">
-                    <p><span>Website</span> <a href="#">yoursite.com</a></p>
-                </div>
-            </div>
-        </div>
-        <div class="row block-9">
-            <div class="col-lg-6 d-flex">
-                @using (@Html.BeginForm("Send", "Contact", FormMethod.Post, htmlAttributes: new { @class = "bg-light p-5 contact-form" }))
-                {
-                    @Html.AntiForgeryToken();
-
-                    <div class="form-group">
-
-
-                        @Html.TextBoxFor(x => x.Name, htmlAttributes: new { @class = "form-control", id = "name", @placeholder = "Your Name" })
-                        @Html.ValidationMessageFor( x => x.Name)
-                    </div>
-                    <div class="form-group">
-
-
-                        @Html.TextBoxFor(x => x.Email, htmlAttributes: new { @class = "form-control", id = "email", @placeholder = "Your Email" })
-                        @Html.ValidationMessageFor(x => x.Name)
-                    </div>
-                    <div class="form-group">
-
-
-                        @Html.TextBoxFor(x => x.Subject, htmlAttributes: new { @class = "form-control", id = "subject", @placeholder = "Subject" })
-                        @Html.ValidationMessageFor(x => x.Name)
-                    </div>
-                    <div class="form-group">
-
-
-                        @Html.TextAreaFor(x => x.Message, rows: 7, columns: 30, htmlAttributes: new { @class = "form-control", id = "message", @placeholder = "Message" })
-                        @Html.ValidationMessageFor(x => x.Name)
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
-                    </div>
-                }
-            </div>
-
-            <div class="col-lg-6 d-flex">
-                <div id="map" class="bg-light"></div>
-            </div>
+            </a>
         </div>
     </div>
-</section>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-green">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-tasks fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">12</div>
+                        <div>New Tasks!</div>
+                    </div>
+                </div>
+            </div>
+            <a href="#">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 
-@section ValidationSection{
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-}
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-yellow">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-shopping-cart fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">124</div>
+                        <div>New Orders!</div>
+                    </div>
+                </div>
+            </div>
+            <a href="#">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-red">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-support fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">13</div>
+                        <div>Support Tickets!</div>
+                    </div>
+                </div>
+            </div>
+            <a href="#">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 
-
-
-
-
-
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
