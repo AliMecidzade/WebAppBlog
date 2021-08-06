@@ -124,6 +124,10 @@
     <Compile Include="Migrations\202107301208580_PostRealImageUpdate.designer.cs">
       <DependentUpon>202107301208580_PostRealImageUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108061551299_PostTextLengthChanged.cs" />
+    <Compile Include="Migrations\202108061551299_PostTextLengthChanged.designer.cs">
+      <DependentUpon>202108061551299_PostTextLengthChanged.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -157,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107301208580_PostRealImageUpdate.resx">
       <DependentUpon>202107301208580_PostRealImageUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108061551299_PostTextLengthChanged.resx">
+      <DependentUpon>202108061551299_PostTextLengthChanged.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

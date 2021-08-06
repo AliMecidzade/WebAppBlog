@@ -358,21 +358,24 @@ namespace BlogWeb.WebUI.Infrastructure
 		{
 
 			var category = await _dbContext.Categories.Where(x => x.Name == model.CategoryName).FirstOrDefaultAsync();
+
+			var existingPost = await _dbContext.Posts.FindAsync(model.Id);
 			Post post = new Post
 			{
 				AuthorId = model.AuthorId,
 				CategoryId = model.CategoryId,
-                ImageData = model.ImageData,
-				ImageMimeType = model.ImageMimeType,
-				ShortDescription = model.ShortDescription,
-				Text = model.Text,
+				ImageData = model.ImageData ?? existingPost.ImageData,
+		 	    ImageMimeType = model.ImageMimeType ?? existingPost.ImageMimeType,
+		     	ShortDescription = model.ShortDescription,
+		 		Text = model.Text,
 				PublishDate = model.WrittenDate,
 				WrittenDate = model.WrittenDate,
 				Title = model.Title,
-				Category = category
+				Category = category,
+				ArchiveId = 1
+			
 			};
 
-			var existingPost = await _dbContext.Posts.FindAsync(model.Id);
 
             if (existingPost == null)
             {
@@ -380,20 +383,35 @@ namespace BlogWeb.WebUI.Infrastructure
             }
             else
             {
-				//Post dbEntry = await _dbContext.Posts.FindAsync();
-				existingPost.Title = model.Title;
-				existingPost.CategoryId = model.CategoryId;
-				existingPost.ImageData = model.ImageData ?? existingPost.ImageData;
-				existingPost.ImageMimeType = model.ImageMimeType ?? existingPost.ImageMimeType;
-				existingPost.ShortDescription = model.ShortDescription;
-				existingPost.Text = model.Text;
-				existingPost.PublishDate = model.WrittenDate;
-				existingPost.WrittenDate = model.WrittenDate;
+                Post dbEntry = await _dbContext.Posts.FindAsync(model.Id);
+                if (dbEntry != null)
+                {
+					dbEntry.Title = post.Title ?? existingPost.Title;
+					dbEntry.CategoryId = category.Id;
+					dbEntry.ImageData = post.ImageData ?? existingPost.ImageData;
+					dbEntry.ImageMimeType = post.ImageMimeType ?? existingPost.ImageMimeType;
+					dbEntry.ShortDescription = post.ShortDescription ?? existingPost.ShortDescription;
+					dbEntry.Text = post.Text ?? existingPost.Text;
+					dbEntry.PublishDate = post.WrittenDate;
+					dbEntry.WrittenDate = post.WrittenDate;
+				}
 			}
 
-			_dbContext.Posts.Add(post);
+
 			return await _dbContext.SaveChangesAsync();
 		}
 
-	}
+
+        public static async Task<int> RemovePostAsync(this BlogWebDbContext _dbContext, int id)
+		{
+			Post p = await _dbContext.Posts.FindAsync(id);
+            if (p != null)
+				_dbContext.Posts.Remove(p);
+				
+            
+
+		return	await _dbContext.SaveChangesAsync();
+		}
+
+    }
 }

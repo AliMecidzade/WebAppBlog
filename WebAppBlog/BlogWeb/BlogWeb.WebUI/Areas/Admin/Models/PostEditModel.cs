@@ -15,10 +15,10 @@ namespace BlogWeb.WebUI.Models
 		[StringLength(maximumLength: 300)]
 		public string Title { get; set; }
 	
-		[StringLength(maximumLength: 300)]
+		[StringLength(maximumLength: 500)]
 		public string ShortDescription { get; set; }
 		[Required]
-		[StringLength(maximumLength: 700)]
+		[StringLength(maximumLength: 5000)]
 		public string Text { get; set; }
 		[Required]
 		public byte[] ImageData { get; set; }
