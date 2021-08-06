@@ -13,10 +13,10 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
-                    <div class="panel-body"> 
+                    <div class="panel-body">
                         @using (@Html.BeginForm("Login", "Account", FormMethod.Post, htmlAttributes: new { @class = "bg-light p-5 " }))
                         {
-                            
+
                             @Html.AntiForgeryToken()
 
                             <div class="form-group">
@@ -24,7 +24,7 @@
                             <div class="form-group">
 
 
-                                @Html.TextBoxFor(x => x.Email, htmlAttributes: new { @class = "form-control", id = "email", @placeholder = "Your Email"})
+                                @Html.TextBoxFor(x => x.Email, htmlAttributes: new { @class = "form-control", id = "email", @placeholder = "Your Email" })
                                 @Html.ValidationMessageFor(x => x.Email)
                             </div>
                             <div class="form-group">
@@ -51,7 +51,8 @@
             </div>
         </div>
     </div>
-
-
+   
+    <script src="~/Areas/Admin/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Areas/Admin/Scripts/jquery.validate.unobtrusive.min.js"></script>
 </body>
 </html>

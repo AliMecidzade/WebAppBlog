@@ -7,6 +7,7 @@ namespace BlogWeb.WebUI.Models
 {
     public class MenuViewModel
     {
+        public bool IsActive { get; set; }
         public string Name { get; set; }
         public string Controller { get; set; }
         public string Action { get; set; }

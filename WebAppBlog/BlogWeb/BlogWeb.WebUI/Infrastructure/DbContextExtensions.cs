@@ -8,6 +8,8 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Configuration;
+using System.Web.Mvc;
 
 namespace BlogWeb.WebUI.Infrastructure
 {
@@ -53,8 +55,9 @@ namespace BlogWeb.WebUI.Infrastructure
                     WrittenDate = x.WrittenDate,
                     CommentsCount = x.Comments.Count,
                     CategoryName = x.Category.Name,
-                    ImagePath = x.ImagePath
-                }).ToListAsync();
+					ImageData = x.ImageData,
+					ImageMimeType = x.ImageMimeType
+				}).ToListAsync();
         }
 		public static async Task<IEnumerable<PostTravelViewModel>> GetPaginatablePostTravelAsync(this BlogWebDbContext _dbContext, int itemsPerPage, PageModel model)
 		{
@@ -68,7 +71,8 @@ namespace BlogWeb.WebUI.Infrastructure
 					ShortDescription = x.ShortDescription,
 					WrittenDate = x.WrittenDate,
 					CommentsCount = x.Comments.Count,
-					ImagePath = x.ImagePath,
+					ImageData = x.ImageData,
+					ImageMimeType = x.ImageMimeType,
 					Author = _dbContext.Authors.Where(y => y.Id == x.AuthorId)
 					                                       .Select(y => new AuthorViewModel
 														   {
@@ -94,11 +98,13 @@ namespace BlogWeb.WebUI.Infrastructure
 			return _dbContext.Posts.OrderByDescending(x => x.ViewsCount).Take(3)
 				.Select(x => new PopularPostViewModel
 				{
+					Id = x.Id,
 					Title = x.Title,
 					PublishDate = x.PublishDate,
 					AuthorName = x.Author.User.Username,
 					CommentsCount = x.Comments.Count,
-					ImagePath = x.ImagePath
+                    ImageData = x.ImageData,
+					ImageMimeType = x.ImageMimeType
 				}).ToList();
 		}
 
@@ -111,7 +117,8 @@ namespace BlogWeb.WebUI.Infrastructure
 				Id = post.Id,
 				ShortDescription = post.ShortDescription,
 
-				ImagePath = post.ImagePath,
+				ImageData = post.ImageData,
+				ImageMimeType = post.ImageMimeType,
 				Text = post.Text,
 				Title = post.Title,
 				ViewsCount = post.ViewsCount
@@ -178,24 +185,215 @@ namespace BlogWeb.WebUI.Infrastructure
 			_dbContext.ContactMessages.Add(message);
 			return await _dbContext.SaveChangesAsync();
 		}
-		public static IEnumerable<MenuViewModel> GetAllMenus(this BlogWebDbContext _dbContext)
-		{
-			return _dbContext.Menus.Where(x => x.IsActive)
-				.Select(x => new MenuViewModel
-			{
-				Name = x.Name,
-				Controller = x.Controller,
-				Action = x.Action
-			}).ToList();
-		}
+        public static IEnumerable<MenuViewModel> GetAllMenus(this BlogWebDbContext _dbContext)
+        {
+            return _dbContext.Menus.Where(x => x.IsActive)
+                .Select(x => new MenuViewModel
+                {
+                    Name = x.Name,
+                    Controller = x.Controller,
+                    Action = x.Action,
 
-		public static async Task<User> GetUserAsync(this BlogWebDbContext _dbContext, LoginModel model) 
+                }).ToList();
+        }
+
+        public static async Task<User> GetUserAsync(this BlogWebDbContext _dbContext, LoginModel model) 
 		{
 		  return await _dbContext.Users.Where(x => x.Email == model.Email && x.Password == model.Password).FirstOrDefaultAsync();
 
 			
 		}
+		public static async Task<IEnumerable<EntityReportModel>> GetEntitiesCountAsync(this BlogWebDbContext _dbContext)
+		{
+			// id, name, count
+			List<EntityReportModel> reportModels = new List<EntityReportModel>();
 
+
+			var contacts = new EntityReportModel
+			{
+				Name = "Contact",
+				Count = await _dbContext.ContactMessages.CountAsync()
+			};
+			
+			var archives = new EntityReportModel
+			{
+				Name = "Archives",
+				Count = await _dbContext.Archives.CountAsync()
+			};
+
+			var tags = new EntityReportModel
+			{
+				Name = "Tags",
+				Count = await _dbContext.Tags.CountAsync()
+			};
+		
+
+
+			reportModels.Add(new EntityReportModel
+			{
+				Name = "Tags",				Count = await _dbContext.Tags.CountAsync()
+			});
+			reportModels.Add(new EntityReportModel
+			{
+				Name = "Posts",
+				Count = await _dbContext.Posts.CountAsync()
+			});
+			reportModels.Add(new EntityReportModel
+			{
+				Name = "Users",
+				Count = await _dbContext.Users.CountAsync()
+			});
+			reportModels.Add(new EntityReportModel
+			{
+				Name = "Authors",
+
+				Count = await _dbContext.Authors.CountAsync()
+			});
+			reportModels.Add(new EntityReportModel
+			{
+				Name = "Comments",
+				Count = await _dbContext.Comments.CountAsync()
+			});
+			reportModels.Add(new EntityReportModel
+			{
+				Name = "Categories",
+				Count = await _dbContext.Categories.CountAsync()
+			});
+			reportModels.Add(contacts);
+			reportModels.Add(archives);
+			return reportModels;
+
+
+		}
+		public static async Task<IEnumerable<PostReportViewModel>> GetAllPostsAsync(this BlogWebDbContext _dbContext)
+		{
+			return await _dbContext.Posts.OrderBy(x => x.WrittenDate)
+				.Select(x => new PostReportViewModel
+				{
+
+					Id = x.Id,
+					Title = x.Title,
+					ShortDescription = x.ShortDescription,
+					WrittenDate = x.WrittenDate,
+					PublishedDate = x.PublishDate,
+					CommentsCount = x.Comments.Count,
+					CategoryName = _dbContext.Categories.Where(y => y.Id == x.CategoryId).FirstOrDefault().Name,
+					Author = _dbContext.Authors.Where(y => y.Id == x.AuthorId)
+														   .Select(y => new AuthorViewModel
+														   {
+															   Description = y.Description,
+															   ImagePath = y.User.ImagePath,
+															   Username = y.User.Username
+														   }).FirstOrDefault()
+
+				}).ToListAsync();
+		}
+
+
+
+		public static async Task<PostEditModel> GetPostEditModelAsync(this BlogWebDbContext _dbContext, int id)
+		{
+			var post = await _dbContext.Posts.FindAsync(id);
+
+            if (post != null)
+            {
+				return new PostEditModel();
+            }
+            else
+            {
+				var postFull = new PostEditModel
+				{
+					Id = post.Id,
+					ShortDescription = post.ShortDescription,
+					Text = post.Text,
+					Title = post.Title,
+					ImageData = post.ImageData,
+					ImageMimeType = post.ImageMimeType,
+					WrittenDate = post.WrittenDate,
+					AuthorId = post.AuthorId,
+					CategoryId = post.CategoryId,
+
+				};
+
+				postFull.CategoryName = _dbContext.Categories.Where(x => id == post.CategoryId)
+													 .Select(x => new CategoryViewModel
+													 {
+														 Name = x.Name
+													 }).FirstOrDefaultAsync().GetAwaiter().GetResult().Name;
+
+
+				postFull.Author = await _dbContext.Authors.Where(x => x.Id == post.AuthorId)
+									.Select(x => new AuthorViewModel
+									{
+										Description = x.Description,
+										ImagePath = x.User.ImagePath,
+										Username = x.User.Username
+									}).FirstOrDefaultAsync();
+
+				postFull.Categories = await _dbContext.Categories.Select(x => new SelectListItem
+				{
+					Value = x.Name,
+					Text = x.Name
+
+				}).ToListAsync();
+
+				return postFull;
+			}
+
+		
+			
+		}
+
+
+		//GetPostAsync
+		public static async Task<Post> GetPostAsync(this BlogWebDbContext _dbContext, int id)
+		{
+			return await _dbContext.Posts.FindAsync(id);
+
+
+		}
+
+		//SavePostAsync - add/edit
+		public static async Task<int> SavePostAsync(this BlogWebDbContext _dbContext, PostEditModel model)
+		{
+
+			var category = await _dbContext.Categories.Where(x => x.Name == model.CategoryName).FirstOrDefaultAsync();
+			Post post = new Post
+			{
+				AuthorId = model.AuthorId,
+				CategoryId = model.CategoryId,
+                ImageData = model.ImageData,
+				ImageMimeType = model.ImageMimeType,
+				ShortDescription = model.ShortDescription,
+				Text = model.Text,
+				PublishDate = model.WrittenDate,
+				WrittenDate = model.WrittenDate,
+				Title = model.Title,
+				Category = category
+			};
+
+			var existingPost = await _dbContext.Posts.FindAsync(model.Id);
+
+            if (existingPost == null)
+            {
+				_dbContext.Posts.Add(post);
+            }
+            else
+            {
+				//Post dbEntry = await _dbContext.Posts.FindAsync();
+				existingPost.Title = model.Title;
+				existingPost.CategoryId = model.CategoryId;
+				existingPost.ImageData = model.ImageData ?? existingPost.ImageData;
+				existingPost.ImageMimeType = model.ImageMimeType ?? existingPost.ImageMimeType;
+				existingPost.ShortDescription = model.ShortDescription;
+				existingPost.Text = model.Text;
+				existingPost.PublishDate = model.WrittenDate;
+				existingPost.WrittenDate = model.WrittenDate;
+			}
+
+			_dbContext.Posts.Add(post);
+			return await _dbContext.SaveChangesAsync();
+		}
 
 	}
 }
