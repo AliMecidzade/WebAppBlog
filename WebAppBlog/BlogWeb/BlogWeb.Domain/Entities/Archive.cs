@@ -9,8 +9,8 @@ namespace BlogWeb.Domain.Entities
 {
 	public class Archive
 	{
-		public int Id { get; set; }
-		[Required]
+        public int Id { get; set; }
+        [Required]
 		[StringLength(maximumLength: 50)]
 		public string Month { get; set; }
 		[Required]

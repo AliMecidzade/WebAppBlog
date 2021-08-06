@@ -135,37 +135,37 @@
                 Month = "December",
                 Year = "2018"
             },
-        new Archive
-        {
-            Id = 2,
-            Month = "September",
-            Year = "2018"
-        },
-        new Archive
-        {
-            Id = 3,
-            Month = "August",
-            Year = "2018"
-        },
-        new Archive
-        {
-            Id = 4,
-            Month = "July",
-            Year = "2018"
-        },
-        new Archive
-        {
-            Id = 5,
-            Month = "June",
-            Year = "2018"
-        },
-        new Archive
-        {
-            Id = 6,
-            Month = "May",
-            Year = "2018"
-        }
-        );
+            new Archive
+            {
+                Id = 2,
+                Month = "September",
+                Year = "2018"
+            },
+            new Archive
+            {
+                Id = 3,
+                Month = "August",
+                Year = "2018"
+            },
+            new Archive
+            {
+                Id = 4,
+                Month = "July",
+                Year = "2018"
+            },
+            new Archive
+            {
+                Id = 5,
+                Month = "June",
+                Year = "2018"
+            },
+            new Archive
+            {
+                Id = 6,
+                Month = "May",
+                Year = "2018"
+            }
+            );
 
             context.Users.AddOrUpdate(new User
             {
@@ -186,51 +186,51 @@
             });
             #endregion
 
-            var post1 = new Post
-            {
-                Id = 1,
-                Title = "A Loving Heart is the Truest Wisdom",
-                ImagePath = "image_1.jpg",
-                Text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, eius " +
-                    "mollitia suscipit, quisquam doloremque distinctio perferendis et doloribus unde architecto optio " +
-                    "laboriosam porro adipisci sapiente officiis nemo accusamus ad praesentium? Esse minima nisi et. " +
-                    "Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae " +
-                    "voluptates soluta architecto tempora.",
-                ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-                ArchiveId = 1,
-                CategoryId = 4,
-                AuthorId = 1,
-                WrittenDate = DateTime.Now,
-                PublishDate = DateTime.Now,
-                ViewsCount = 3
-            };
-            using (
-                 var transaction = context.Database.BeginTransaction())
-            {
-                try
-                {
-                    context.Tags.AddOrUpdate(tag1, tag2, tag3, tag4, tag5, tag6, tag7, tag8);
-                    context.Posts.AddOrUpdate(post1);
+            /*  var post1 = new Post
+              {
+                  Id = 1,
+                  Title = "A Loving Heart is the Truest Wisdom",
+                  ImagePath = "image_1.jpg",
+                  Text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, eius " +
+                      "mollitia suscipit, quisquam doloremque distinctio perferendis et doloribus unde architecto optio " +
+                      "laboriosam porro adipisci sapiente officiis nemo accusamus ad praesentium? Esse minima nisi et. " +
+                      "Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae " +
+                      "voluptates soluta architecto tempora.",
+                  ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+                  ArchiveId = 2,
+                  CategoryId = 4,
+                  AuthorId = 1,
+                  WrittenDate = DateTime.Now,
+                  PublishDate = DateTime.Now,
+                  ViewsCount = 3
+              };*/
+            /*     using (
+                      var transaction = context.Database.BeginTransaction())
+                 {
+                     try
+                     {
+                         context.Tags.AddOrUpdate(tag1, tag2, tag3, tag4, tag5, tag6, tag7, tag8);
+                         context.Posts.AddOrUpdate(post1);
 
-                    post1.Tags.Add(tag1);
-                    post1.Tags.Add(tag2);
-                    post1.Tags.Add(tag5);
+                         post1.Tags.Add(tag1);
+                         post1.Tags.Add(tag2);
+                         post1.Tags.Add(tag5);
 
-                    tag1.Posts.Add(post1);
-                    tag2.Posts.Add(post1);
-                    tag5.Posts.Add(post1);
-                }
-                catch
-                {
+                         tag1.Posts.Add(post1);
+                         tag2.Posts.Add(post1);
+                         tag5.Posts.Add(post1);
+                     }
+                     catch
+                     {
 
-                    transaction.Rollback();
-                }
-            }
-
-
+                         transaction.Rollback();
+                     }
+                 }*/
 
 
-            context.Posts.AddOrUpdate(
+
+            #region
+          /*  context.Posts.AddOrUpdate(
 
                     new Post
                     {
@@ -239,9 +239,9 @@
                         Title = "Great Things Never Came from Comfort Zone",
                         ImagePath = "image_2.jpg",
                         Text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, eius ",
-                
+
                         ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-                        ArchiveId = 1,
+                        ArchiveId = 2,
                         CategoryId = 1,
                         AuthorId = 1,
                         WrittenDate = DateTime.Now,
@@ -259,7 +259,7 @@
                 "Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae " +
                 "voluptates soluta architecto tempora.",
                  ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-                 ArchiveId = 1,
+                 ArchiveId = 3,
                  CategoryId = 4,
                  AuthorId = 1,
                  WrittenDate = DateTime.Now,
@@ -277,7 +277,7 @@
                 "Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae " +
                 "voluptates soluta architecto tempora.",
                 ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-                ArchiveId = 1,
+                ArchiveId = 4,
                 CategoryId = 4,
                 AuthorId = 1,
                 WrittenDate = DateTime.Now,
@@ -295,7 +295,7 @@
                 "Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae " +
                 "voluptates soluta architecto tempora.",
                 ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-                ArchiveId = 2,
+                ArchiveId = 5,
                 CategoryId = 3,
                 AuthorId = 1,
                 WrittenDate = DateTime.Now,
@@ -313,7 +313,7 @@
                 "Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae " +
                 "voluptates soluta architecto tempora.",
                 ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-                ArchiveId = 3,
+                ArchiveId = 6,
                 CategoryId = 2,
                 AuthorId = 1,
                 WrittenDate = DateTime.Now,
@@ -331,7 +331,7 @@
                 "Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae " +
                 "voluptates soluta architecto tempora.",
                 ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-                ArchiveId = 1,
+                ArchiveId = 6,
                 CategoryId = 4,
                 AuthorId = 1,
                 WrittenDate = DateTime.Now,
@@ -349,7 +349,7 @@
                 "Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae " +
                 "voluptates soluta architecto tempora.",
                 ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-                ArchiveId = 5,
+                ArchiveId = 8,
                 CategoryId = 3,
                 AuthorId = 1,
                 WrittenDate = DateTime.Now,
@@ -367,7 +367,7 @@
                 "Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae " +
                 "voluptates soluta architecto tempora.",
                 ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-                ArchiveId = 1,
+                ArchiveId = 2,
                 CategoryId = 4,
                 AuthorId = 1,
                 WrittenDate = DateTime.Now,
@@ -385,7 +385,7 @@
                 "Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae " +
                 "voluptates soluta architecto tempora.",
                 ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-                ArchiveId = 1,
+                ArchiveId = 3,
                 CategoryId = 4,
                 AuthorId = 1,
                 WrittenDate = DateTime.Now,
@@ -403,7 +403,7 @@
                 "Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae " +
                 "voluptates soluta architecto tempora.",
                 ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-                ArchiveId = 2,
+                ArchiveId = 4,
                 CategoryId = 3,
                 AuthorId = 1,
                 WrittenDate = DateTime.Now,
@@ -421,7 +421,7 @@
                 "Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae " +
                 "voluptates soluta architecto tempora.",
                 ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-                ArchiveId = 3,
+                ArchiveId = 5,
                 CategoryId = 2,
                 AuthorId = 1,
                 WrittenDate = DateTime.Now,
@@ -439,7 +439,7 @@
                 "Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae " +
                 "voluptates soluta architecto tempora.",
                 ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-                ArchiveId = 5,
+                ArchiveId = 6,
                 CategoryId = 3,
                 AuthorId = 1,
                 WrittenDate = DateTime.Now,
@@ -457,7 +457,7 @@
                 "Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae " +
                 "voluptates soluta architecto tempora.",
                 ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-                ArchiveId = 1,
+                ArchiveId = 8,
                 CategoryId = 4,
                 AuthorId = 1,
                 WrittenDate = DateTime.Now,
@@ -475,7 +475,7 @@
                 "Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae " +
                 "voluptates soluta architecto tempora.",
                 ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-                ArchiveId = 1,
+                ArchiveId = 2,
                 CategoryId = 4,
                 AuthorId = 1,
                 WrittenDate = DateTime.Now,
@@ -493,7 +493,7 @@
                 "Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae " +
                 "voluptates soluta architecto tempora.",
                 ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-                ArchiveId = 2,
+                ArchiveId = 3,
                 CategoryId = 3,
                 AuthorId = 1,
                 WrittenDate = DateTime.Now,
@@ -511,7 +511,7 @@
                 "Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae " +
                 "voluptates soluta architecto tempora.",
                 ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-                ArchiveId = 3,
+                ArchiveId = 4,
                 CategoryId = 2,
                 AuthorId = 1,
                 WrittenDate = DateTime.Now,
@@ -529,7 +529,7 @@
                 "Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae " +
                 "voluptates soluta architecto tempora.",
                 ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-                ArchiveId = 3,
+                ArchiveId = 5,
                 CategoryId = 2,
                 AuthorId = 1,
                 WrittenDate = DateTime.Now,
@@ -537,9 +537,10 @@
                 ViewsCount = 5
             }
 
-            );
-           
+            );*/
+            #endregion
         }
     }
 }
+
 
