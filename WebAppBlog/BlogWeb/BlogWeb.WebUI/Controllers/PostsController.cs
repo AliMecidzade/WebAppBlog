@@ -1,5 +1,6 @@
 ﻿using BlogWeb.Domain.Concrete;
 using BlogWeb.Domain.Entities;
+using BlogWeb.WebUI.Areas.Admin.Filters;
 using BlogWeb.WebUI.Infrastructure;
 using BlogWeb.WebUI.Models;
 using System;
@@ -22,11 +23,13 @@ namespace BlogWeb.WebUI.Controllers
         }
         [HttpGet]
         [ActionName("Index")]
+        [AuthorizeFilter("/Admin/Account/Login", "user")]
         public async Task<ActionResult> Index() => View(await _dbContext.GetAllPostsAsync());
 
         // GET: Posts/Details/5
         [HttpGet]
         [ActionName("Index")]
+        [AuthorizeFilter("/Admin/Account/Login", "user")]
         public async Task<ActionResult> DetailsAsync(int id) => View(await _dbContext.GetSinglePostDetailsAsync(id));
 
 
@@ -38,6 +41,7 @@ namespace BlogWeb.WebUI.Controllers
         // POST: Posts/Create
         [HttpPost]
         [ActionName("Create")]
+        [AuthorizeFilter("/Admin/Account/Login", "user")]
         public ActionResult Create(FormCollection collection)
         {
             try
@@ -55,12 +59,14 @@ namespace BlogWeb.WebUI.Controllers
         // GET: Posts/Edit/5
         [HttpGet]
         [ActionName("Edit")]
+        [AuthorizeFilter("/Admin/Account/Login", "user")]
         public async Task<ActionResult> EditAsync(int id) => View(await _dbContext.GetPostEditModelAsync(id));
 
 
         // POST: Posts/Edit/5
         [HttpPost]
         [ActionName("Edit")]
+        [AuthorizeFilter("/Admin/Account/Login", "user")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> EditAsync(PostEditModel model, HttpPostedFileBase image = null)
         {
@@ -87,7 +93,8 @@ namespace BlogWeb.WebUI.Controllers
             
         }
 
-         [ActionName("Delete")]
+        [ActionName("Delete")]
+        [AuthorizeFilter("/Admin/Account/Login", "user")]
         public async Task<ActionResult> DeleteAsync(int id)
         {
             await _dbContext.RemovePostAsync(id);
