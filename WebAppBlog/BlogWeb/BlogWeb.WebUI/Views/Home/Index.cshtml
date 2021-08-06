@@ -9,15 +9,18 @@
         <div class="row d-flex">
             <div class="col-xl-8 py-5 px-md-5">
                 <div class="row pt-md-4">
-                    @foreach (var post in posts)
+                    @if (posts != null)
                     {
-                        Html.RenderPartial("_SinglePostIndexPartial", post);
+                        foreach (var post in posts)
+                        {
+                            Html.RenderPartial("_SinglePostIndexPartial", post);
+                        }
                     }
                 </div><!-- END-->
                 <div class="row">
                     <!--pagination-->
                     <div class="col">
-                        @Html.Action("Pages", "Pagination" , new PageModel { Controller = "Home" , Action = "Index"})
+                   с     @Html.Action("Pages", "Pagination" , new PageModel { Controller = "Home" , Action = "Index"})
 
                     </div>
                 </div>

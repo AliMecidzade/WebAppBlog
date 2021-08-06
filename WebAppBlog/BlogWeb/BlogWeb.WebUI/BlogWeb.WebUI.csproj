@@ -109,7 +109,10 @@
     <Content Include="Areas\Admin\Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Areas\Admin\Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Scripts\flot-data.js" />
+    <Content Include="Areas\Admin\Scripts\jquery-3.6.0.js" />
     <Content Include="Areas\Admin\Scripts\jquery.min.js" />
+    <Content Include="Areas\Admin\Scripts\jquery.validate.min.js" />
+    <Content Include="Areas\Admin\Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Areas\Admin\Scripts\metisMenu.min.js" />
     <Content Include="Areas\Admin\Scripts\morris-data.js" />
     <Content Include="Areas\Admin\Scripts\morris.min.js" />
@@ -191,6 +194,7 @@
     <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Head.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_EntityCountPartialView.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -218,7 +222,14 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Filters\AuthorizeFilter.cs" />
+    <Compile Include="Areas\Admin\Models\CommentsReportViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\ContactMessageReportViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\EntityReportModel.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
+    <Compile Include="Areas\Admin\Models\MenuReportViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\PostEditModel.cs" />
+    <Compile Include="Areas\Admin\Models\PostReportViewModel.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\ArchiveController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -229,6 +240,7 @@
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\PaginationController.cs" />
     <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Controllers\TravelController.cs" />
     <Compile Include="Global.asax.cs">
@@ -298,6 +310,9 @@
     <Content Include="Views\Shared\_SinglePostTravelView.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Posts\Index.cshtml" />
+    <Content Include="Views\Posts\Details.cshtml" />
+    <Content Include="Views\Posts\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

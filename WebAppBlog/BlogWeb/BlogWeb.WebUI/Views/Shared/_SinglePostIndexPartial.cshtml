@@ -5,7 +5,9 @@
 }
 <div class="col-md-12">
     <div class="blog-entry ftco-animate d-md-flex">
-        <a href="single.html" class="img img-2" style="background-image: url(/Content/images/@post.ImagePath);"></a>
+        <img class="img img-2" 
+             src="@Url.Action("GetImage", "Posrs",
+                        new { Model.Id })" />
         <div class="text text-2 pl-md-4">
             <h3 class="mb-2">@Html.ActionLink(post.Title, "Details", "Post", routeValues: new { id = post.Id }, htmlAttributes : null)</h3>
             <div class="meta-wrap">

@@ -1,9 +1,13 @@
 ﻿@model IEnumerable<BlogWeb.WebUI.Models.PopularPostViewModel>
 
-@foreach (var item in Model)
+@if (Model != null)
 {
+    foreach (var item in Model)
+    {
 <div class="block-21 mb-4 d-flex">
-    <a class="blog-img mr-4" style="background-image: url(/Content/images/@item.ImagePath);"></a>
+    <img class="blog-img mr-4"
+         src="@Url.Action("GetImage", "Posrs",
+                        new { item.Id })" />
     <div class="text">
         <h3 class="heading"><a href="#">@item.Title</a></h3>
         <div class="meta">
@@ -13,3 +17,4 @@
         </div>
     </div>
 </div>}
+}

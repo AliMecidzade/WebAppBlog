@@ -15,7 +15,9 @@
                     <h1 class="mb-3">@post.Title</h1>
                     <p>@post.ShortDescription</p>
                     <p>
-                        <img src="/Content/images/@post.ImagePath" alt="" class="img-fluid">
+                        <img class="img-fluid"
+                             src="@Url.Action("GetImage", "Posrs",
+                        new { post.Id })" />
                     </p>
                     <p>@post.Text</p>
                     

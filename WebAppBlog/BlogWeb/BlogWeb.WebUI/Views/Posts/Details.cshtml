@@ -1,0 +1,72 @@
+﻿@model BlogWeb.WebUI.Models.PostDetailsViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Post Details</h2>
+
+<div>
+    <h4>Post Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShortDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShortDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Text)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Text)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("image")
+        </dt>
+
+        <dd>
+            @if (Model.ImageData != null)
+            {
+                <img width="400" src="@Url.Action("GetImage" ,"Post" , new { Model.Id })" />
+            }
+
+
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ViewsCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ViewsCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id },  htmlAttributes: new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Back to List", "Index"  ,null , htmlAttributes: new { @class = "btn btn-primary" })
+</p>
