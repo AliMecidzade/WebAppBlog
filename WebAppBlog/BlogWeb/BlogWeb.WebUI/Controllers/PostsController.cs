@@ -28,7 +28,7 @@ namespace BlogWeb.WebUI.Controllers
 
         // GET: Posts/Details/5
         [HttpGet]
-        [ActionName("Index")]
+        [ActionName("Details")]
         [AuthorizeFilter("/Admin/Account/Login", "user")]
         public async Task<ActionResult> DetailsAsync(int id) => View(await _dbContext.GetSinglePostDetailsAsync(id));
 
@@ -76,7 +76,6 @@ namespace BlogWeb.WebUI.Controllers
                 {
                     model.ImageMimeType = image.ContentType;
                     model.ImageData = new byte[image.ContentLength];
-                  
                     model.WrittenDate = DateTime.Now;
                     model.ShortDescription = model.Text.Substring(0, 500);
                     model.AuthorId = Convert.ToInt32(Session["user"]);

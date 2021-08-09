@@ -6,7 +6,7 @@
 <div class="col-md-12">
     <div class="blog-entry-2 ftco-animate">
         <img class="img"
-             src="@Url.Action("GetImage", "Posrs",
+             src="@Url.Action("GetImage", "Posts",
                         new { Model.Id })" />
         <div class="text pt-4">
             <h3 class="mb-4">@Html.ActionLink(post.Title, "Details", "Post" , routeValues: new { Id = post.Id   }, htmlAttributes: null)</h3>

@@ -34,5 +34,6 @@ namespace BlogWeb.WebUI.Controllers
             }
             return RedirectToAction("Detsils", "Post" , routeValues: new { id = model.PostId});
         }
+       
     }
 }

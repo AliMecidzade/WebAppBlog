@@ -15,4 +15,7 @@ namespace BlogWeb.WebUI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
     }
+
+
+
 }

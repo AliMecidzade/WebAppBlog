@@ -21,7 +21,7 @@ namespace BlogWeb.WebUI.Controllers
             _itemsPerPage = 6;
         }
         [HttpGet]
-        public async Task<ActionResult> Index(PageModel model) => View(await _dbContext.GetPaginatablePostsAsync(_itemsPerPage, model));
+        public async Task<ActionResult> Index(PageModel model) => View(await _dbContext.GetPaginatablePostTravelAsync(_itemsPerPage, model));
 
     }
 }

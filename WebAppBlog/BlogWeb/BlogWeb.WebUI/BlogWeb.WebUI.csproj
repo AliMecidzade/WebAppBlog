@@ -223,6 +223,8 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Filters\AuthorizeFilter.cs" />
+    <Compile Include="Areas\Admin\Models\CategoryCreateModel.cs" />
+    <Compile Include="Areas\Admin\Models\CategoryReportViewModel.cs" />
     <Compile Include="Areas\Admin\Models\CommentsReportViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ContactMessageReportViewModel.cs" />
     <Compile Include="Areas\Admin\Models\EntityReportModel.cs" />
@@ -232,9 +234,11 @@
     <Compile Include="Areas\Admin\Models\PostReportViewModel.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\ArchiveController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\FashionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
@@ -288,7 +292,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
@@ -309,10 +312,14 @@
     <Content Include="Views\Travel\Index.cshtml" />
     <Content Include="Views\Shared\_SinglePostTravelView.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Posts\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Posts\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Posts\Edit.cshtml" />
+    <Content Include="Views\Archive\All.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
-    <Content Include="Views\Posts\Index.cshtml" />
-    <Content Include="Views\Posts\Details.cshtml" />
-    <Content Include="Views\Posts\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ContactMessages\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -323,7 +330,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Views\Archive\" />
     <Folder Include="Views\Command\" />
   </ItemGroup>
   <ItemGroup>

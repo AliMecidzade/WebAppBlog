@@ -26,6 +26,7 @@ namespace BlogWeb.Domain.Entities
 		[Required]
 		[DataType("smalldatetime")]
 		public DateTime SubmmittedDate { get; set; }
-	}
+        public DateTime WrittenDate { get; set; }
+    }
 }
 
